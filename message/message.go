@@ -2,6 +2,18 @@ package message
 
 const (
 	RequestChat = iota
+	RequestStart
+	RequestRoll
+	RequestEndTurn
+	RequestBuy
+	RequestAuction
+	RequestBid
+	RequestPay
+	RequestBuild
+	RequestDemolish
+	RequestMortgage
+	RequestUnmortgage
+	RequestBankrupt
 )
 
 const (
@@ -11,6 +23,19 @@ const (
 	ResponseJoined
 	ResponseLeft
 	ResponseChat
+	ResponseStart
+	ResponseRoll
+	ResponseSetTurn
+	ResponseBuy
+	ResponseAuction
+	ResponseBid
+	ResponseAuctionWon
+	ResponsePay
+	ResponseBuild
+	ResponseDemolish
+	ResponseMortgage
+	ResponseUnmortgage
+	ResponseBankrupt
 )
 
 type Message struct {

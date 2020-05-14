@@ -5,16 +5,16 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-const (
-	NullPlayerID = -1
-)
-
 type Player struct {
 	ID        int             `json:"-"`
 	Secret    string          `json:"-"`
 	WS        *websocket.Conn `json:"-"`
 	Connected bool            `json:"connected"`
 	Name      string          `json:"name"`
+	Position  int             `json:"position"`
+	Money     int             `json:"money"`
+	Sentence  int             `json:"sentence"`
+	Bankrupt  bool            `json:"bankrupt"`
 }
 
 func (game *Game) PlayerJoined(player *Player) int {
@@ -69,5 +69,5 @@ func (game *Game) GetPlayerID(secret string) int {
 	}
 
 	// If not found, return a null ID.
-	return NullPlayerID
+	return NullPlayer
 }

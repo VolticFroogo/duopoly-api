@@ -21,10 +21,7 @@ func (game *Game) chat(msg message.Message, playerID int) {
 
 	// Verify the text isn't over the maximum length.
 	if len(text) > MaxChatLength {
-		_ = game.Players[playerID].WS.WriteJSON(message.Message{
-			Type: message.ResponseError,
-			Data: fmt.Sprintf("chat cannot be longer than %d", MaxChatLength),
-		})
+		game.error(playerID, fmt.Sprintf("chat cannot be longer than %d", MaxChatLength))
 		return
 	}
 
@@ -32,8 +29,8 @@ func (game *Game) chat(msg message.Message, playerID int) {
 	game.broadcast(message.Message{
 		Type: message.ResponseChat,
 		Data: responseChat{
-			Player:  0,
+			Player:  playerID,
 			Message: text,
 		},
-	}, map[int]bool{playerID: true})
+	}, nil)
 }

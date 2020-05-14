@@ -49,7 +49,7 @@ func greeting(conn *websocket.Conn, secret string) (g *game.Game, playerID int, 
 	playerID = g.GetPlayerID(secret)
 
 	// If the game is in progress, and the player isn't a part of it, reject them.
-	if g.Playing && playerID == game.NullPlayerID {
+	if g.Playing && playerID == game.NullPlayer {
 		_ = conn.WriteJSON(message.Message{
 			Type: message.ResponsePlaying,
 		})
@@ -57,7 +57,7 @@ func greeting(conn *websocket.Conn, secret string) (g *game.Game, playerID int, 
 		return
 	}
 
-	if playerID == game.NullPlayerID {
+	if playerID == game.NullPlayer {
 		// If the player is joining a pre-game lobby, announce it.
 		playerID = g.PlayerJoined(&game.Player{
 			Secret:    secret,
