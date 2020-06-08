@@ -9,6 +9,7 @@ func (game *Game) Message(msg message.Message, playerID int) {
 	game.mutex.Lock()
 	defer game.mutex.Unlock()
 
+	// TODO: possibly refactor this to use registered handles over a switch.
 	// Handle the message with the relevant function based on the type.
 	switch msg.Type {
 	case message.RequestChat:

@@ -41,7 +41,7 @@ func tickAuction(game *Game) {
 
 	game.broadcast(message.Message{
 		Type: message.ResponseAuctionWon,
-		Data: data.Bid,
+		Data: game.Action,
 	}, nil)
 }
 

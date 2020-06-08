@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net/http"
 
 	"github.com/VolticFroogo/duopoly-api/db"
 	"github.com/VolticFroogo/duopoly-api/helper"
@@ -19,6 +20,10 @@ func main() {
 	}
 
 	r := gin.Default()
+
+	r.OPTIONS("/*a", func(c *gin.Context) {
+		c.Status(http.StatusOK)
+	})
 
 	lobby.Init(r)
 

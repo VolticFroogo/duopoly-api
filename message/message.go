@@ -1,7 +1,8 @@
 package message
 
 const (
-	RequestChat = iota
+	RequestGreeting = iota
+	RequestChat
 	RequestStart
 	RequestRoll
 	RequestEndTurn
